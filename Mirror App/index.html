@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mirror App</title>
+    <!-- Include Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and full-screen setup */
+        html, body, video {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background-color: black;
+        }
+
+        /* Full-screen video */
+        #camera {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Controls for buttons */
+        .controls {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .controls button {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.6);
+            color: white;
+            font-size: 30px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .controls button:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+            transform: scale(1.1);
+        }
+
+        /* Gallery to show saved photos */
+        .gallery {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            z-index: 10;
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 10px;
+        }
+
+        .gallery img, .gallery video {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* Modal for viewing image/video in large size */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 20;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .modal-content img, .modal-content video {
+            width: 100%;
+            height: auto;
+        }
+
+        .save-btn {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .save-btn:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+    </style>
+</head>
+<body>
+    <video autoplay id="camera"></video>
+
+    <!-- Controls for Capture and Recording -->
+    <div class="controls">
+        <button id="captureBtn" class="captureBtn">
+            <i class="fas fa-camera"></i>
+        </button>
+
+        <button id="recordBtn" class="recordBtn">
+            <i class="fas fa-video"></i>
+        </button>
+    </div>
+
+    <!-- Gallery to show saved photos -->
+    <div class="gallery" id="gallery"></div>
+
+    <!-- Modal for viewing image/video in large size -->
+    <div class="modal" id="modal">
+        <div class="modal-content" id="modalContent">
+            <!-- Content will be inserted dynamically -->
+        </div>
+        <button class="save-btn" id="saveBtn">Save</button>
+    </div>
+
+    <script>
+        let stream;
+        let mediaRecorder;
+        let recordedChunks = [];
+        let isRecording = false;
+        let currentMedia; // Track current media for saving
+
+        // Access webcam
+        navigator.mediaDevices.getUserMedia({
+            video: {
+                facingMode: "user" // Front camera
+            }
+        }).then(function success(s) {
+            stream = s;
+            document.getElementById("camera").srcObject = stream;
+        }).catch(function (err) {
+            console.error("Error accessing webcam: ", err);
+        });
+
+        // Capture photo button functionality
+        document.getElementById("captureBtn").addEventListener("click", function () {
+            const canvas = document.createElement("canvas");
+            const context = canvas.getContext("2d");
+
+            // Set canvas size to video size
+            canvas.width = document.getElementById("camera").videoWidth;
+            canvas.height = document.getElementById("camera").videoHeight;
+
+            // Draw the current video frame onto the canvas
+            context.drawImage(document.getElementById("camera"), 0, 0, canvas.width, canvas.height);
+
+            // Convert canvas to image and save it in gallery
+            const img = document.createElement("img");
+            img.src = canvas.toDataURL("image/png");
+
+            // Add the image to the gallery
+            img.onclick = function () {
+                openModal(img);
+            };
+            document.getElementById("gallery").appendChild(img);
+        });
+
+        // Video recording functionality
+        document.getElementById("recordBtn").addEventListener("click", function () {
+            if (isRecording) {
+                // Stop recording
+                mediaRecorder.stop();
+                document.getElementById("recordBtn").innerHTML = '<i class="fas fa-video"></i>';
+            } else {
+                // Start recording
+                mediaRecorder = new MediaRecorder(stream);
+                mediaRecorder.ondataavailable = function (event) {
+                    recordedChunks.push(event.data);
+                };
+                mediaRecorder.onstop = function () {
+                    const blob = new Blob(recordedChunks, { type: "video/webm" });
+                    const videoURL = URL.createObjectURL(blob);
+
+                    // Create a video element to display the recorded video
+                    const video = document.createElement("video");
+                    video.controls = true;
+                    video.src = videoURL;
+
+                    // Add video to the gallery
+                    video.onclick = function () {
+                        openModal(video);
+                    };
+                    document.getElementById("gallery").appendChild(video);
+                };
+
+                mediaRecorder.start();
+                document.getElementById("recordBtn").innerHTML = '<i class="fas fa-stop"></i>';
+            }
+
+            // Toggle recording state
+            isRecording = !isRecording;
+        });
+
+        // Open modal to view image or video in large size
+        function openModal(media) {
+            currentMedia = media; // Track current media for saving
+            const modal = document.getElementById("modal");
+            const modalContent = document.getElementById("modalContent");
+
+            // Clear existing content and add new content
+            modalContent.innerHTML = '';
+            modalContent.appendChild(media.cloneNode(true)); // Clone to avoid affecting the original
+
+            // Show modal
+            modal.style.display = 'flex';
+        }
+
+        // Close modal
+        document.getElementById("modal").addEventListener("click", function (event) {
+            if (event.target === this) {
+                this.style.display = 'none';
+            }
+        });
+
+        // Save button functionality
+        document.getElementById("saveBtn").addEventListener("click", function () {
+            if (currentMedia.tagName === "IMG") {
+                // Save the image
+                const link = document.createElement("a");
+                link.href = currentMedia.src;
+                link.download = "captured-image.png";
+                link.click();
+            } else if (currentMedia.tagName === "VIDEO") {
+                // Save the video
+                const link = document.createElement("a");
+                link.href = currentMedia.src;
+                link.download = "recorded-video.webm";
+                link.click();
+            }
+
+            // Close modal after saving
+            document.getElementById("modal").style.display = 'none';
+        });
+    </script>
+</body>
+</html>
