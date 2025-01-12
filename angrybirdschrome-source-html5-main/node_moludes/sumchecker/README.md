@@ -89,4 +89,4 @@ This library is copyrighted under the terms of the [Apache 2.0 License].
 
 [`crypto.createHash()`]: https://nodejs.org/dist/latest-v4.x/docs/api/crypto.html#crypto_crypto_createhash_algorithm
 [`Promise`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
-[Apache 2.0 License]: http://www.apache.org/licenses/LICENSE-2.0
+[Apache 2.0 License]: https://www.apache.org/licenses/LICENSE-2.0

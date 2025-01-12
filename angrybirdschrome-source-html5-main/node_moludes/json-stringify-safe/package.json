@@ -10,9 +10,9 @@
   ],
   "homepage": "https://github.com/isaacs/json-stringify-safe",
   "bugs": "https://github.com/isaacs/json-stringify-safe/issues",
-  "author": "Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me)",
+  "author": "Isaac Z. Schlueter <i@izs.me> (https://blog.izs.me)",
   "contributors": [
-    "Andri Möll <andri@dot.ee> (http://themoll.com)"
+    "Andri Möll <andri@dot.ee> (https://themoll.com)"
   ],
   "license": "ISC",
   "repository": {

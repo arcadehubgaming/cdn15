@@ -1,9 +1,9 @@
 # global-agent
 
 [![GitSpo Mentions](https://gitspo.com/badges/mentions/gajus/global-agent?style=flat-square)](https://gitspo.com/mentions/gajus/global-agent)
-[![Travis build status](http://img.shields.io/travis/gajus/global-agent/master.svg?style=flat-square)](https://travis-ci.org/gajus/global-agent)
+[![Travis build status](https://img.shields.io/travis/gajus/global-agent/master.svg?style=flat-square)](https://travis-ci.org/gajus/global-agent)
 [![Coveralls](https://img.shields.io/coveralls/gajus/global-agent.svg?style=flat-square)](https://coveralls.io/github/gajus/global-agent)
-[![NPM version](http://img.shields.io/npm/v/global-agent.svg?style=flat-square)](https://www.npmjs.org/package/global-agent)
+[![NPM version](https://img.shields.io/npm/v/global-agent.svg?style=flat-square)](https://www.npmjs.org/package/global-agent)
 [![Canonical Code Style](https://img.shields.io/badge/code%20style-canonical-blue.svg?style=flat-square)](https://github.com/gajus/canonical)
 [![Twitter Follow](https://img.shields.io/twitter/follow/kuizinas.svg?style=social&label=Follow)](https://twitter.com/kuizinas)
 
@@ -48,14 +48,14 @@ import 'global-agent/bootstrap';
 Bash:
 
 ```bash
-$ export GLOBAL_AGENT_HTTP_PROXY=http://127.0.0.1:8080
+$ export GLOBAL_AGENT_HTTP_PROXY=https://127.0.0.1:8080
 
 ```
 
 Alternatively, you can preload module using Node.js `--require, -r` configuration, e.g.
 
 ```bash
-$ export GLOBAL_AGENT_HTTP_PROXY=http://127.0.0.1:8080
+$ export GLOBAL_AGENT_HTTP_PROXY=https://127.0.0.1:8080
 $ node -r 'global-agent/bootstrap' your-script.js
 
 ```
@@ -115,17 +115,17 @@ Unlike `bootstrap` routine, `createGlobalProxyAgent` factory does not create `gl
 You can override the `global.GLOBAL_AGENT.HTTP_PROXY` value at runtime to change proxy behaviour, e.g.
 
 ```js
-http.get('http://127.0.0.1:8000');
+http.get('https://127.0.0.1:8000');
 
-global.GLOBAL_AGENT.HTTP_PROXY = 'http://127.0.0.1:8001';
+global.GLOBAL_AGENT.HTTP_PROXY = 'https://127.0.0.1:8001';
 
-http.get('http://127.0.0.1:8000');
+http.get('https://127.0.0.1:8000');
 
-global.GLOBAL_AGENT.HTTP_PROXY = 'http://127.0.0.1:8002';
+global.GLOBAL_AGENT.HTTP_PROXY = 'https://127.0.0.1:8002';
 
 ```
 
-The first HTTP request is going to use http://127.0.0.1:8001 proxy and the secord request is going to use http://127.0.0.1:8002.
+The first HTTP request is going to use https://127.0.0.1:8001 proxy and the secord request is going to use https://127.0.0.1:8002.
 
 All `global-agent` configuration is available under `global.GLOBAL_AGENT` namespace.
 
@@ -149,7 +149,7 @@ The environment variable `GLOBAL_AGENT_HTTPS_PROXY` can be set to specify a sepa
 `global-agent` is using [`roarr`](https://www.npmjs.com/package/roarr) logger to log HTTP requests and response (HTTP status code and headers), e.g.
 
 ```json
-{"context":{"program":"global-agent","namespace":"Agent","logLevel":10,"destination":"http://gajus.com","proxy":"http://127.0.0.1:8076"},"message":"proxying request","sequence":1,"time":1556269669663,"version":"1.0.0"}
+{"context":{"program":"global-agent","namespace":"Agent","logLevel":10,"destination":"https://gajus.com","proxy":"https://127.0.0.1:8076"},"message":"proxying request","sequence":1,"time":1556269669663,"version":"1.0.0"}
 {"context":{"program":"global-agent","namespace":"Agent","logLevel":10,"headers":{"content-type":"text/plain","content-length":"2","date":"Fri, 26 Apr 2019 12:07:50 GMT","connection":"close"},"requestId":6,"statusCode":200},"message":"proxying response","sequence":2,"time":1557133856955,"version":"1.0.0"}
 
 ```

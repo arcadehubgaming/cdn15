@@ -120,7 +120,7 @@ agenda item and sends it as a pull request after the meeting.
 
 The WG follows a
 [Consensus
-Seeking](http://en.wikipedia.org/wiki/Consensus-seeking_decision-making)
+Seeking](https://en.wikipedia.org/wiki/Consensus-seeking_decision-making)
 decision-making model.
 
 When an agenda item has appeared to reach a consensus the moderator

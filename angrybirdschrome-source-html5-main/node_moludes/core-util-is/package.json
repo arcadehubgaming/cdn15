@@ -21,7 +21,7 @@
     "isThat",
     "polyfill"
   ],
-  "author": "Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me/)",
+  "author": "Isaac Z. Schlueter <i@izs.me> (https://blog.izs.me/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/isaacs/core-util-is/issues"

@@ -47,7 +47,7 @@ urlParseLax('[2001:db8::]:8000');
 	query: null,
 	pathname: '/',
 	path: '/',
-	href: 'http://[2001:db8::]:8000/'
+	href: 'https://[2001:db8::]:8000/'
 }
 */
 ```
@@ -114,7 +114,7 @@ Type: `Object`
 Type: `boolean`<br>
 Default: `true`
 
-Prepend `https://` instead of `http://` to protocol-less URLs.
+Prepend `https://` instead of `https://` to protocol-less URLs.
 
 
 ## Related

@@ -1,5 +1,5 @@
 /**
-* A vertical blur filter by Mat Groves http://matgroves.com/ @Doormat23
+* A vertical blur filter by Mat Groves https://matgroves.com/ @Doormat23
 */
 Phaser.Filter.BlurY = function (game) {
 

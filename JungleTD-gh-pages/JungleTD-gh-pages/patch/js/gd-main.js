@@ -5633,7 +5633,7 @@
                                             .bind(this))
                                         }
                                         .bind(this)),
-                                        t = ["https://imasdk.googleapis.com/js/sdkloader/ima3_debug.js", "https://imasdk.googleapis.com/js/sdkloader/ima3.js", "http://imasdk.googleapis.com/js/sdkloader/ima3_debug.js", "http://imasdk.googleapis.com/js/sdkloader/ima3.js"],
+                                        t = ["https://imasdk.googleapis.com/js/sdkloader/ima3_debug.js", "https://imasdk.googleapis.com/js/sdkloader/ima3.js", "https://imasdk.googleapis.com/js/sdkloader/ima3_debug.js", "https://imasdk.googleapis.com/js/sdkloader/ima3.js"],
                                         n = this.options.debug ? t[0] : t[1],
                                         e.next = 13,
                                         td(n, "gdsdk_ima", {
@@ -5938,7 +5938,7 @@
                                         });
                                         i = e.toString(),
                                         e = Date.now();
-                                        return '<?xml version="1.0" encoding="UTF-8"?>\n<vmap:VMAP xmlns:vmap="http://www.iab.net/videosuite/vmap" version="1.0">\n<vmap:AdBreak timeOffset="start" breakType="linear,nonlinear" breakId="break-1">\n    <vmap:AdSource id="'.concat(e++, '" allowMultipleAds="false" followRedirects="true">\n        ').concat(Bd({
+                                        return '<?xml version="1.0" encoding="UTF-8"?>\n<vmap:VMAP xmlns:vmap="https://www.iab.net/videosuite/vmap" version="1.0">\n<vmap:AdBreak timeOffset="start" breakType="linear,nonlinear" breakId="break-1">\n    <vmap:AdSource id="'.concat(e++, '" allowMultipleAds="false" followRedirects="true">\n        ').concat(Bd({
                                             id: e++,
                                             adtag_url: o,
                                             error_url: null == n ? void 0 : n.error_url,

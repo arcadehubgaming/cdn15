@@ -69,7 +69,7 @@ if (define.supportsDescriptors) {
 Simply clone the repo, `npm install`, and run `npm test`
 
 [package-url]: https://npmjs.org/package/define-properties
-[npm-version-svg]: http://versionbadg.es/ljharb/define-properties.svg
+[npm-version-svg]: https://versionbadg.es/ljharb/define-properties.svg
 [travis-svg]: https://travis-ci.org/ljharb/define-properties.svg
 [travis-url]: https://travis-ci.org/ljharb/define-properties
 [deps-svg]: https://david-dm.org/ljharb/define-properties.svg
@@ -79,8 +79,8 @@ Simply clone the repo, `npm install`, and run `npm test`
 [testling-svg]: https://ci.testling.com/ljharb/define-properties.png
 [testling-url]: https://ci.testling.com/ljharb/define-properties
 [npm-badge-png]: https://nodei.co/npm/define-properties.png?downloads=true&stars=true
-[license-image]: http://img.shields.io/npm/l/define-properties.svg
+[license-image]: https://img.shields.io/npm/l/define-properties.svg
 [license-url]: LICENSE
-[downloads-image]: http://img.shields.io/npm/dm/define-properties.svg
-[downloads-url]: http://npm-stat.com/charts.html?package=define-properties
+[downloads-image]: https://img.shields.io/npm/dm/define-properties.svg
+[downloads-url]: https://npm-stat.com/charts.html?package=define-properties
 

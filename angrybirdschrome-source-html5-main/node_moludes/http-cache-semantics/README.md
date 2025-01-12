@@ -1,6 +1,6 @@
 # Can I cache this? [![Build Status](https://travis-ci.org/kornelski/http-cache-semantics.svg?branch=master)](https://travis-ci.org/kornelski/http-cache-semantics)
 
-`CachePolicy` tells when responses can be reused from a cache, taking into account [HTTP RFC 7234](http://httpwg.org/specs/rfc7234.html) rules for user agents and shared caches.
+`CachePolicy` tells when responses can be reused from a cache, taking into account [HTTP RFC 7234](https://httpwg.org/specs/rfc7234.html) rules for user agents and shared caches.
 It also implements [RFC 5861](https://tools.ietf.org/html/rfc5861), implementing `stale-if-error` and `stale-while-revalidate`.
 It's aware of many tricky details such as the `Vary` header, proxy revalidation, and authenticated responses.
 
@@ -74,7 +74,7 @@ If `options.shared` is `true` (default), then the response is evaluated from a p
 
 `options.cacheHeuristic` is a fraction of response's age that is used as a fallback cache duration. The default is 0.1 (10%), e.g. if a file hasn't been modified for 100 days, it'll be cached for 100\*0.1 = 10 days.
 
-`options.immutableMinTimeToLive` is a number of milliseconds to assume as the default time to cache responses with `Cache-Control: immutable`. Note that [per RFC](http://httpwg.org/http-extensions/immutable.html) these can become stale, so `max-age` still overrides the default.
+`options.immutableMinTimeToLive` is a number of milliseconds to assume as the default time to cache responses with `Cache-Control: immutable`. Note that [per RFC](https://httpwg.org/http-extensions/immutable.html) these can become stale, so `max-age` still overrides the default.
 
 If `options.ignoreCargoCult` is true, common anti-cache directives will be completely ignored if the non-standard `pre-check` and `post-check` directives are present. These two useless directives are most commonly found in bad StackOverflow answers and PHP's "session limiter" defaults.
 

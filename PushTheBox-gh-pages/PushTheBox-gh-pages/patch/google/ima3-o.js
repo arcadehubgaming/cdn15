@@ -14720,7 +14720,7 @@
     /*
 
 Math.uuid.js (v1.4)
-http://www.broofa.com
+https://www.broofa.com
 mailto:robert@broofa.com
 Copyright (c) 2010 Robert Kieffer
 Dual licensed under the MIT and GPL licenses.
@@ -16988,7 +16988,7 @@ Dual licensed under the MIT and GPL licenses.
             a = ji().sort().join(",");
             ib(Wf(a)) || (b.e = a);
             b = YA(this, b);
-            var d = new Q("http://pagead2.googlesyndication.com/pagead/gen_204");
+            var d = new Q("https://pagead2.googlesyndication.com/pagead/gen_204");
             ff(b, function(e, f) {
                 Bt(d, f, null == e ? "" : "boolean" === typeof e ? e ? "t" : "f" : "" + e)
             }, this);
@@ -21857,7 +21857,7 @@ Dual licensed under the MIT and GPL licenses.
                           , ac = qt(A.j);
                         ac.remove("amp_js_v");
                         ac.remove("amp_lite");
-                        var Xd = Ca ? Ct("https://" + Ca) : Ct("http://" + la);
+                        var Xd = Ca ? Ct("https://" + Ca) : Ct("https://" + la);
                         pt(Xd, ac);
                         Za = Xd.toString()
                     } catch (Qv) {

@@ -1,5 +1,5 @@
 /**
-* A horizontal blur filter by Mat Groves http://matgroves.com/ @Doormat23
+* A horizontal blur filter by Mat Groves https://matgroves.com/ @Doormat23
 */
 Phaser.Filter.BlurX = function (game) {
 

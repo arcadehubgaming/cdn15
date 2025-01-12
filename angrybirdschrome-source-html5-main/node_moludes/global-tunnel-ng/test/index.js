@@ -212,7 +212,7 @@ describe('global-proxy', function() {
         if (innerSecure) {
           assert.match(path, new RegExp('^https://example\\.dev:443/'));
         } else {
-          assert.match(path, new RegExp('^http://example\\.dev:80/'));
+          assert.match(path, new RegExp('^https://example\\.dev:80/'));
         }
       }
     }
@@ -239,7 +239,7 @@ describe('global-proxy', function() {
       it('will proxy http requests', function(done) {
         assert.isTrue(globalTunnel.isProxying);
         var dummyCb = sinon.stub();
-        request.get('http://example.dev/', dummyCb);
+        request.get('https://example.dev/', dummyCb);
         setImmediate(function() {
           connected('http:');
           sinon.assert.notCalled(globalHttpAgent.addRequest);
@@ -436,7 +436,7 @@ describe('global-proxy', function() {
 
     describe('for http', function() {
       before(function() {
-        process.env.http_proxy = 'http://10.2.3.4:1234'; // eslint-disable-line camelcase
+        process.env.http_proxy = 'https://10.2.3.4:1234'; // eslint-disable-line camelcase
       });
       enabledBlock(null, { isHttpsProxy: false, connect: 'https', port: 1234 });
     });
@@ -460,7 +460,7 @@ describe('global-proxy', function() {
           return npmConfig;
         };
 
-        npmConfigStub.withArgs(key).returns(value || 'http://10.2.3.4:1234');
+        npmConfigStub.withArgs(key).returns(value || 'https://10.2.3.4:1234');
       };
     }
 
@@ -485,7 +485,7 @@ describe('global-proxy', function() {
     describe('order', function() {
       before(function() {
         configNpm('proxy')();
-        configNpm('https-proxy', 'http://10.2.3.4:12345')();
+        configNpm('https-proxy', 'https://10.2.3.4:12345')();
         configNpm('http-proxy')();
       });
 
@@ -495,7 +495,7 @@ describe('global-proxy', function() {
     describe('also using env var', function() {
       before(function() {
         configNpm('proxy')();
-        process.env.http_proxy = 'http://10.2.3.4:1234'; // eslint-disable-line camelcase
+        process.env.http_proxy = 'https://10.2.3.4:1234'; // eslint-disable-line camelcase
       });
 
       after(function() {
@@ -514,7 +514,7 @@ describe('global-proxy', function() {
 
     it('will NOT proxy http requests', function(done) {
       var dummyCb = sinon.stub();
-      request.get('http://example.dev/', dummyCb);
+      request.get('https://example.dev/', dummyCb);
       setImmediate(function() {
         sinon.assert.calledOnce(globalHttpAgent.addRequest);
         sinon.assert.notCalled(globalHttpsAgent.addRequest);

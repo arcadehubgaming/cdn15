@@ -728,7 +728,7 @@ moduleOverrides = undefined;
 //    site/build/text/docs/api_reference/preamble.js.txt
 // You can also build docs locally as HTML or other formats in site/
 // An online HTML version (which may be of a different version of Emscripten)
-//    is up at http://kripken.github.io/emscripten-site/docs/api_reference/preamble.js.html
+//    is up at https://kripken.github.io/emscripten-site/docs/api_reference/preamble.js.html
 
 //========================================
 // Runtime code shared with compiler
@@ -1230,7 +1230,7 @@ function UTF8ArrayToString(u8Array, idx) {
 
     var str = '';
     while (1) {
-      // For UTF8 byte structure, see http://en.wikipedia.org/wiki/UTF-8#Description and https://www.ietf.org/rfc/rfc2279.txt and https://tools.ietf.org/html/rfc3629
+      // For UTF8 byte structure, see https://en.wikipedia.org/wiki/UTF-8#Description and https://www.ietf.org/rfc/rfc2279.txt and https://tools.ietf.org/html/rfc3629
       u0 = u8Array[idx++];
       if (!u0) return str;
       if (!(u0 & 0x80)) { str += String.fromCharCode(u0); continue; }
@@ -1292,8 +1292,8 @@ function stringToUTF8Array(str, outU8Array, outIdx, maxBytesToWrite) {
   var endIdx = outIdx + maxBytesToWrite - 1; // -1 for string null terminator.
   for (var i = 0; i < str.length; ++i) {
     // Gotcha: charCodeAt returns a 16-bit word that is a UTF-16 encoded code unit, not a Unicode code point of the character! So decode UTF16->UTF32->UTF8.
-    // See http://unicode.org/faq/utf_bom.html#utf16-3
-    // For UTF8 byte structure, see http://en.wikipedia.org/wiki/UTF-8#Description and https://www.ietf.org/rfc/rfc2279.txt and https://tools.ietf.org/html/rfc3629
+    // See https://unicode.org/faq/utf_bom.html#utf16-3
+    // For UTF8 byte structure, see https://en.wikipedia.org/wiki/UTF-8#Description and https://www.ietf.org/rfc/rfc2279.txt and https://tools.ietf.org/html/rfc3629
     var u = str.charCodeAt(i); // possibly a lead surrogate
     if (u >= 0xD800 && u <= 0xDFFF) u = 0x10000 + ((u & 0x3FF) << 10) | (str.charCodeAt(++i) & 0x3FF);
     if (u <= 0x7F) {
@@ -1353,7 +1353,7 @@ function lengthBytesUTF8(str) {
   var len = 0;
   for (var i = 0; i < str.length; ++i) {
     // Gotcha: charCodeAt returns a 16-bit word that is a UTF-16 encoded code unit, not a Unicode code point of the character! So decode UTF16->UTF32->UTF8.
-    // See http://unicode.org/faq/utf_bom.html#utf16-3
+    // See https://unicode.org/faq/utf_bom.html#utf16-3
     var u = str.charCodeAt(i); // possibly a lead surrogate
     if (u >= 0xD800 && u <= 0xDFFF) u = 0x10000 + ((u & 0x3FF) << 10) | (str.charCodeAt(++i) & 0x3FF);
     if (u <= 0x7F) {
@@ -1452,7 +1452,7 @@ function UTF32ToString(ptr) {
       return str;
     ++i;
     // Gotcha: fromCharCode constructs a character from a UTF-16 encoded code (pair), not from a Unicode code point! So encode the code point to UTF-16 for constructing.
-    // See http://unicode.org/faq/utf_bom.html#utf16-3
+    // See https://unicode.org/faq/utf_bom.html#utf16-3
     if (utf32 >= 0x10000) {
       var ch = utf32 - 0x10000;
       str += String.fromCharCode(0xD800 | (ch >> 10), 0xDC00 | (ch & 0x3FF));
@@ -1484,7 +1484,7 @@ function stringToUTF32(str, outPtr, maxBytesToWrite) {
   var endPtr = startPtr + maxBytesToWrite - 4;
   for (var i = 0; i < str.length; ++i) {
     // Gotcha: charCodeAt returns a 16-bit word that is a UTF-16 encoded code unit, not a Unicode code point of the character! We must decode the string to UTF-32 to the heap.
-    // See http://unicode.org/faq/utf_bom.html#utf16-3
+    // See https://unicode.org/faq/utf_bom.html#utf16-3
     var codeUnit = str.charCodeAt(i); // possibly a lead surrogate
     if (codeUnit >= 0xD800 && codeUnit <= 0xDFFF) {
       var trailSurrogate = str.charCodeAt(++i);
@@ -1506,7 +1506,7 @@ function lengthBytesUTF32(str) {
   var len = 0;
   for (var i = 0; i < str.length; ++i) {
     // Gotcha: charCodeAt returns a 16-bit word that is a UTF-16 encoded code unit, not a Unicode code point of the character! We must decode the string to UTF-32 to the heap.
-    // See http://unicode.org/faq/utf_bom.html#utf16-3
+    // See https://unicode.org/faq/utf_bom.html#utf16-3
     var codeUnit = str.charCodeAt(i);
     if (codeUnit >= 0xD800 && codeUnit <= 0xDFFF) ++i; // possibly a lead surrogate, so skip over the tail surrogate.
     len += 4;
@@ -2507,7 +2507,7 @@ function copyTempDouble(ptr) {
 
         // These are the 'safe' feature-enabling extensions that don't add any performance impact related to e.g. debugging, and
         // should be enabled by default so that client GLES2/GL code will not need to go through extra hoops to get its stuff working.
-        // As new extensions are ratified at http://www.khronos.org/registry/webgl/extensions/ , feel free to add your new extensions
+        // As new extensions are ratified at https://www.khronos.org/registry/webgl/extensions/ , feel free to add your new extensions
         // here, as long as they don't produce a performance impact for users that might not be using those extensions.
         // E.g. debugging-related extensions should probably be off by default.
         var automaticallyEnabledExtensions = [ "OES_texture_float", "OES_texture_half_float", "OES_standard_derivatives",
@@ -4733,7 +4733,7 @@ function copyTempDouble(ptr) {
             throw new FS.ErrnoError(ERRNO_CODES[e.code]);
           }
           // node.js v0.10.20 doesn't report blksize and blocks on Windows. Fake them with default blksize of 4096.
-          // See http://support.microsoft.com/kb/140365
+          // See https://support.microsoft.com/kb/140365
           if (NODEFS.isWindows && !stat.blksize) {
             stat.blksize = 4096;
           }
@@ -6694,7 +6694,7 @@ function copyTempDouble(ptr) {
         openRequest.onerror = onerror;
       }};function _utime(path, times) {
       // int utime(const char *path, const struct utimbuf *times);
-      // http://pubs.opengroup.org/onlinepubs/009695399/basedefs/utime.h.html
+      // https://pubs.opengroup.org/onlinepubs/009695399/basedefs/utime.h.html
       var time;
       if (times) {
         // NOTE: We don't keep track of access timestamps.
@@ -7229,7 +7229,7 @@ function copyTempDouble(ptr) {
     }var ENV={};function _dlopen(filename, flag) {
       abort("To use dlopen, you need to use Emscripten's linking support, see https://github.com/kripken/emscripten/wiki/Linking");
       // void *dlopen(const char *file, int mode);
-      // http://pubs.opengroup.org/onlinepubs/009695399/functions/dlopen.html
+      // https://pubs.opengroup.org/onlinepubs/009695399/functions/dlopen.html
       var searchpaths = [];
       if (filename === 0) {
         filename = '__self__';
@@ -7687,7 +7687,7 @@ function copyTempDouble(ptr) {
 
   function _sysconf(name) {
       // long sysconf(int name);
-      // http://pubs.opengroup.org/onlinepubs/009695399/functions/sysconf.html
+      // https://pubs.opengroup.org/onlinepubs/009695399/functions/sysconf.html
       switch(name) {
         case 30: return PAGE_SIZE;
         case 85: return totalMemory / PAGE_SIZE;
@@ -7832,7 +7832,7 @@ function copyTempDouble(ptr) {
 
   function _dlsym(handle, symbol) {
       // void *dlsym(void *restrict handle, const char *restrict name);
-      // http://pubs.opengroup.org/onlinepubs/009695399/functions/dlsym.html
+      // https://pubs.opengroup.org/onlinepubs/009695399/functions/dlsym.html
       symbol = Pointer_stringify(symbol);
 
       if (!DLFCN.loadedLibs[handle]) {
@@ -8104,7 +8104,7 @@ function copyTempDouble(ptr) {
 
   function _unsetenv(name) {
       // int unsetenv(const char *name);
-      // http://pubs.opengroup.org/onlinepubs/009695399/functions/unsetenv.html
+      // https://pubs.opengroup.org/onlinepubs/009695399/functions/unsetenv.html
       if (name === 0) {
         ___setErrNo(ERRNO_CODES.EINVAL);
         return -1;
@@ -9068,7 +9068,7 @@ function copyTempDouble(ptr) {
 
           // Neither .scrollX or .pageXOffset are defined in a spec, but
           // we prefer .scrollX because it is currently in a spec draft.
-          // (see: http://www.w3.org/TR/2013/WD-cssom-view-20131217/)
+          // (see: https://www.w3.org/TR/2013/WD-cssom-view-20131217/)
           var scrollX = ((typeof window.scrollX !== 'undefined') ? window.scrollX : window.pageXOffset);
           var scrollY = ((typeof window.scrollY !== 'undefined') ? window.scrollY : window.pageYOffset);
 
@@ -10726,7 +10726,7 @@ function copyTempDouble(ptr) {
 
   function _getenv(name) {
       // char *getenv(const char *name);
-      // http://pubs.opengroup.org/onlinepubs/009695399/functions/getenv.html
+      // https://pubs.opengroup.org/onlinepubs/009695399/functions/getenv.html
       if (name === 0) return 0;
       name = Pointer_stringify(name);
       if (!ENV.hasOwnProperty(name)) return 0;
@@ -10738,7 +10738,7 @@ function copyTempDouble(ptr) {
 
   function _putenv(string) {
       // int putenv(char *string);
-      // http://pubs.opengroup.org/onlinepubs/009695399/functions/putenv.html
+      // https://pubs.opengroup.org/onlinepubs/009695399/functions/putenv.html
       // WARNING: According to the standard (and the glibc implementation), the
       //          string is taken by reference so future changes are reflected.
       //          We copy it instead, possibly breaking some uses.
@@ -12039,7 +12039,7 @@ function copyTempDouble(ptr) {
           return button.pressed;
         } else {
           // Current gamepad API working draft (Firefox / Chrome Stable)
-          // http://www.w3.org/TR/2012/WD-gamepad-20120529/#gamepad-interface
+          // https://www.w3.org/TR/2012/WD-gamepad-20120529/#gamepad-interface
           return button > 0;
         }
       },queryJoysticks:function () {
@@ -12234,7 +12234,7 @@ function copyTempDouble(ptr) {
       return newDate;
     }function _strftime(s, maxsize, format, tm) {
       // size_t strftime(char *restrict s, size_t maxsize, const char *restrict format, const struct tm *restrict timeptr);
-      // http://pubs.opengroup.org/onlinepubs/009695399/functions/strftime.html
+      // https://pubs.opengroup.org/onlinepubs/009695399/functions/strftime.html
 
       var tm_zone = HEAP32[(((tm)+(40))>>2)];
 
@@ -13734,7 +13734,7 @@ function copyTempDouble(ptr) {
 
   function __exit(status) {
       // void _exit(int status);
-      // http://pubs.opengroup.org/onlinepubs/000095399/functions/exit.html
+      // https://pubs.opengroup.org/onlinepubs/000095399/functions/exit.html
       Module['exit'](status);
     }function _exit(status) {
       __exit(status);
@@ -14188,7 +14188,7 @@ function copyTempDouble(ptr) {
 
   function _setenv(envname, envval, overwrite) {
       // int setenv(const char *envname, const char *envval, int overwrite);
-      // http://pubs.opengroup.org/onlinepubs/009695399/functions/setenv.html
+      // https://pubs.opengroup.org/onlinepubs/009695399/functions/setenv.html
       if (envname === 0) {
         ___setErrNo(ERRNO_CODES.EINVAL);
         return -1;

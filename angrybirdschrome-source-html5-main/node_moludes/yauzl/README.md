@@ -278,7 +278,7 @@ yauzl notices this false information and emits an error from the `readStream`
 after some number of bytes have already been piped through the stream.
 
 This check allows clients to trust the `uncompressedSize` field in `Entry` objects.
-Guarding against [zip bomb](http://en.wikipedia.org/wiki/Zip_bomb) attacks can be accomplished by
+Guarding against [zip bomb](https://en.wikipedia.org/wiki/Zip_bomb) attacks can be accomplished by
 doing some heuristic checks on the size metadata and then watching out for the above errors.
 Such heuristics are outside the scope of this library,
 but enforcing the `uncompressedSize` is implemented here as a security feature.

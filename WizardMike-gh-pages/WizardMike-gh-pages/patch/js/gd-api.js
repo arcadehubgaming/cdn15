@@ -5420,7 +5420,7 @@
                         nb || (this.length = e.entries.length)
                     }
                     var Kv, qv, Vv, Wv, ml = Qn, Yv = Kn, Jv = oo("iterator"), yl = !ml(function() {
-                        var e = new URL("b?a=1&b=2&c=3","http://a")
+                        var e = new URL("b?a=1&b=2&c=3","https://a")
                           , r = e.searchParams
                           , n = "";
                         return e.pathname = "c%20d",
@@ -5428,7 +5428,7 @@
                             r.delete("b"),
                             n += t + e
                         }),
-                        !r.size && !Yv || !r.sort || "http://a/c%20d?a=1&c=3" !== e.href || "3" !== r.get("c") || "a=1" !== String(new URLSearchParams("?a=1")) || !r[Jv] || "a" !== new URL("https://a@b").username || "b" !== new URLSearchParams(new URLSearchParams("a=b")).get("a") || "xn--e1aybc" !== new URL("http://тест").host || "#%D0%B1" !== new URL("http://a#б").hash || "a1c3" !== n || "x" !== new URL("http://x",void 0).host
+                        !r.size && !Yv || !r.sort || "https://a/c%20d?a=1&c=3" !== e.href || "3" !== r.get("c") || "a=1" !== String(new URLSearchParams("?a=1")) || !r[Jv] || "a" !== new URL("https://a@b").username || "b" !== new URLSearchParams(new URLSearchParams("a=b")).get("a") || "xn--e1aybc" !== new URL("https://тест").host || "#%D0%B1" !== new URL("https://a#б").hash || "a1c3" !== n || "x" !== new URL("https://x",void 0).host
                     }), Xv = Ci, Qv = Xu, eb = Math.floor, R = Is, tb = n, rb = e, Wc = r, nb = Kn, v = yl, pl = Ci, i = Qu, a = tc, b = F0, E = Ri, ob = Ap, el = ho, ib = xo, ab = ji, sb = ca, ub = ao, cb = Cr, lb = Gu, db = Po, fb = Ii, pb = mc, hb = hc, mb = kp, gb = $v, aa = oo("iterator"), vb = "URLSearchParams", bb = vb + "Iterator", yb = E.set, _b = E.getterFor(vb), wb = E.getterFor(bb), Ab = Object.getOwnPropertyDescriptor, xb = Bv("fetch"), kb = Bv("Request"), Eb = Bv("Headers"), Sb = kb && kb.prototype, po = Eb && Eb.prototype, Rb = tb.RegExp, Ob = tb.TypeError, Db = tb.decodeURIComponent, Tb = tb.encodeURIComponent, Ib = Wc("".charAt), Mb = Wc([].join), Cb = Wc([].push), Lb = Wc("".replace), Pb = Wc([].shift), jb = Wc([].splice), Ub = Wc("".split), $b = Wc("".slice), Bb = /\+/g, Nb = Array(4), Fb = /[!'()~]|%20/g, Gb = {
                         "!": "%21",
                         "'": "%27",
@@ -15502,7 +15502,7 @@
                                     }),
                                     o = n.toString(),
                                     s = Date.now(),
-                                    f = '<?xml version="1.0" encoding="UTF-8"?>\n<vmap:VMAP xmlns:vmap="http://www.iab.net/videosuite/vmap" version="1.0">\n<vmap:AdBreak timeOffset="start" breakType="linear,nonlinear" breakId="break-1">\n    <vmap:AdSource id="'.concat(s++, '" allowMultipleAds="false" followRedirects="true">\n        ').concat(iD({
+                                    f = '<?xml version="1.0" encoding="UTF-8"?>\n<vmap:VMAP xmlns:vmap="https://www.iab.net/videosuite/vmap" version="1.0">\n<vmap:AdBreak timeOffset="start" breakType="linear,nonlinear" breakId="break-1">\n    <vmap:AdSource id="'.concat(s++, '" allowMultipleAds="false" followRedirects="true">\n        ').concat(iD({
                                         id: s++,
                                         adtag_url: u,
                                         error_url: null == i ? void 0 : i.error_url,
@@ -16754,7 +16754,7 @@
                     }, {
                         key: "_getPrebidScripts",
                         value: function() {
-                            var e = ["patch/js/null.js?https://hb.improvedigital.com/pbw/headerlift.min.js", "patch/js/null.js?http://hb.improvedigital.com/pbw/headerlift.min.js"];
+                            var e = ["patch/js/null.js?https://hb.improvedigital.com/pbw/headerlift.min.js", "patch/js/null.js?https://hb.improvedigital.com/pbw/headerlift.min.js"];
                             return this.options.hb_script ? [this.options.hb_script].concat(e) : e
                         }
                     }, {
@@ -17264,7 +17264,7 @@
                                 for (; ; )
                                     switch (e.prev = e.next) {
                                     case 0:
-                                        return r = ["https://imasdk.googleapis.com/js/sdkloader/ima3_debug.js", "https://imasdk.googleapis.com/js/sdkloader/ima3.js", "http://imasdk.googleapis.com/js/sdkloader/ima3_debug.js", "http://imasdk.googleapis.com/js/sdkloader/ima3.js"],
+                                        return r = ["https://imasdk.googleapis.com/js/sdkloader/ima3_debug.js", "https://imasdk.googleapis.com/js/sdkloader/ima3.js", "https://imasdk.googleapis.com/js/sdkloader/ima3_debug.js", "https://imasdk.googleapis.com/js/sdkloader/ima3.js"],
                                         n = this.options.debug ? r[0] : r[1],
                                         e.next = 4,
                                         bn(n, "gdsdk_ima", {
@@ -18859,7 +18859,7 @@
                             return null != (t = n) && null != (t = t.adapters) && t[e] ? null == (t = n) || null == (n = t.adapters) ? void 0 : n[e] : o
                         }
                     }]);
-                    var RT, OT, DT, TT = CT, IT = new A.exports.EventEmitter, MT = ["https://games.softgames.com", "https://sg.gamedistribution.com", "https://minigame-stg.aeriagames.jp", "https://minigame.aeriagames.jp", "https://html5.gamedistribution.com", "http://localhost:3005", "https://yjgames.gamedistribution.com", "https://portal-staging-sgweb.gamedistribution.com/"];
+                    var RT, OT, DT, TT = CT, IT = new A.exports.EventEmitter, MT = ["https://games.softgames.com", "https://sg.gamedistribution.com", "https://minigame-stg.aeriagames.jp", "https://minigame.aeriagames.jp", "https://html5.gamedistribution.com", "https://localhost:3005", "https://yjgames.gamedistribution.com", "https://portal-staging-sgweb.gamedistribution.com/"];
                     function CT(e) {
                         var t = this;
                         le(this, CT),

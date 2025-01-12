@@ -1,6 +1,6 @@
 # prepend-http [![Build Status](https://travis-ci.org/sindresorhus/prepend-http.svg?branch=master)](https://travis-ci.org/sindresorhus/prepend-http)
 
-> Prepend `http://` to humanized URLs like `todomvc.com` and `localhost`
+> Prepend `https://` to humanized URLs like `todomvc.com` and `localhost`
 
 
 ## Install
@@ -16,13 +16,13 @@ $ npm install prepend-http
 const prependHttp = require('prepend-http');
 
 prependHttp('todomvc.com');
-//=> 'http://todomvc.com'
+//=> 'https://todomvc.com'
 
 prependHttp('localhost');
-//=> 'http://localhost'
+//=> 'https://localhost'
 
-prependHttp('http://todomvc.com');
-//=> 'http://todomvc.com'
+prependHttp('https://todomvc.com');
+//=> 'https://todomvc.com'
 
 prependHttp('todomvc.com', {https: true});
 //=> 'https://todomvc.com'
@@ -37,7 +37,7 @@ prependHttp('todomvc.com', {https: true});
 
 Type: `string`
 
-URL to prepend `http://` on.
+URL to prepend `https://` on.
 
 #### options
 
@@ -48,7 +48,7 @@ Type: `Object`
 Type: `boolean`<br>
 Default: `false`
 
-Prepend `https://` instead of `http://`.
+Prepend `https://` instead of `https://`.
 
 
 ## License

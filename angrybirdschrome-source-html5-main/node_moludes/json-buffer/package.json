@@ -13,7 +13,7 @@
   "scripts": {
     "test": "set -e; for t in test/*.js; do node $t; done"
   },
-  "author": "Dominic Tarr <dominic.tarr@gmail.com> (http://dominictarr.com)",
+  "author": "Dominic Tarr <dominic.tarr@gmail.com> (https://dominictarr.com)",
   "license": "MIT",
   "testling": {
     "files": "test/*.js",

@@ -34,7 +34,7 @@ class Agent {
     // https://github.com/request/request/blob/212570b6971a732b8dd9f3c73354bcdda158a737/request.js#L402
     // https://gist.github.com/gajus/e2074cd3b747864ffeaabbd530d30218
 
-    if (request.path.startsWith('http://') || request.path.startsWith('https://')) {
+    if (request.path.startsWith('https://') || request.path.startsWith('https://')) {
       requestUrl = request.path;
     } else {
       requestUrl = this.protocol + '//' + (configuration.hostname || configuration.host) + (configuration.port === 80 || configuration.port === 443 ? '' : ':' + configuration.port) + request.path;
@@ -71,7 +71,7 @@ class Agent {
 
     log.trace({
       destination: requestUrl,
-      proxy: 'http://' + proxy.hostname + ':' + proxy.port,
+      proxy: 'https://' + proxy.hostname + ':' + proxy.port,
       requestId: currentRequestId
     }, 'proxying request');
     request.on('error', error => {

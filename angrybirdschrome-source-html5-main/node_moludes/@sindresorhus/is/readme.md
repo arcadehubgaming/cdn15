@@ -27,7 +27,7 @@ is.number(6);
 //=> true
 ```
 
-When using `is` together with TypeScript, [type guards](http://www.typescriptlang.org/docs/handbook/advanced-types.html#type-guards-and-differentiating-types) are being used to infer the correct type inside if-else statements.
+When using `is` together with TypeScript, [type guards](https://www.typescriptlang.org/docs/handbook/advanced-types.html#type-guards-and-differentiating-types) are being used to infer the correct type inside if-else statements.
 
 ```ts
 import is from '@sindresorhus/is';

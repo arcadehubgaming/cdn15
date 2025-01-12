@@ -7,7 +7,7 @@
 [![npm](https://img.shields.io/npm/dm/cacheable-request.svg)](https://www.npmjs.com/package/cacheable-request)
 [![npm](https://img.shields.io/npm/v/cacheable-request.svg)](https://www.npmjs.com/package/cacheable-request)
 
-[RFC 7234](http://httpwg.org/specs/rfc7234.html) compliant HTTP caching for native Node.js HTTP/HTTPS requests. Caching works out of the box in memory or is easily pluggable with a wide range of storage adapters.
+[RFC 7234](https://httpwg.org/specs/rfc7234.html) compliant HTTP caching for native Node.js HTTP/HTTPS requests. Caching works out of the box in memory or is easily pluggable with a wide range of storage adapters.
 
 **Note:** This is a low level wrapper around the core HTTP modules, it's not a high level request library.
 
@@ -39,12 +39,12 @@ const http = require('http');
 const CacheableRequest = require('cacheable-request');
 
 // Then instead of
-const req = http.request('http://example.com', cb);
+const req = http.request('https://example.com', cb);
 req.end();
 
 // You can do
 const cacheableRequest = new CacheableRequest(http.request);
-const cacheReq = cacheableRequest('http://example.com', cb);
+const cacheReq = cacheableRequest('https://example.com', cb);
 cacheReq.on('request', req => req.end());
 // Future requests to 'example.com' will be returned from cache if still valid
 

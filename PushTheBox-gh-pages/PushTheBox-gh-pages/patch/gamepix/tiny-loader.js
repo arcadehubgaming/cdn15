@@ -1929,7 +1929,7 @@
           , o = e("../internals/is-pure")
           , a = i("iterator");
         t.exports = !r((function() {
-            var e = new URL("b?a=1&b=2&c=3","http://a")
+            var e = new URL("b?a=1&b=2&c=3","https://a")
               , t = e.searchParams
               , n = "";
             return e.pathname = "c%20d",
@@ -1938,7 +1938,7 @@
                 n += r + e
             }
             )),
-            o && !e.toJSON || !t.sort || "http://a/c%20d?a=1&c=3" !== e.href || "3" !== t.get("c") || "a=1" !== String(new URLSearchParams("?a=1")) || !t[a] || "a" !== new URL("https://a@b").username || "b" !== new URLSearchParams(new URLSearchParams("a=b")).get("a") || "xn--e1aybc" !== new URL("http://тест").host || "#%D0%B1" !== new URL("http://a#б").hash || "a1c3" !== n || "x" !== new URL("http://x",void 0).host
+            o && !e.toJSON || !t.sort || "https://a/c%20d?a=1&c=3" !== e.href || "3" !== t.get("c") || "a=1" !== String(new URLSearchParams("?a=1")) || !t[a] || "a" !== new URL("https://a@b").username || "b" !== new URLSearchParams(new URLSearchParams("a=b")).get("a") || "xn--e1aybc" !== new URL("https://тест").host || "#%D0%B1" !== new URL("https://a#б").hash || "a1c3" !== n || "x" !== new URL("https://x",void 0).host
         }
         ))
     }

@@ -20,7 +20,7 @@
     "join",
     "combine"
   ],
-  "author": "Conrad Pankoff <deoxxa@fknsrs.biz> (http://www.fknsrs.biz/)",
+  "author": "Conrad Pankoff <deoxxa@fknsrs.biz> (https://www.fknsrs.biz/)",
   "license": "BSD-3-Clause",
   "devDependencies": {
     "mocha": "^2.2.5"

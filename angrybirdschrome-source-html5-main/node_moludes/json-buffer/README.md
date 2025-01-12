@@ -2,7 +2,7 @@
 
 JSON functions that can convert buffers!
 
-[![build status](https://secure.travis-ci.org/dominictarr/json-buffer.png)](http://travis-ci.org/dominictarr/json-buffer)
+[![build status](https://secure.travis-ci.org/dominictarr/json-buffer.png)](https://travis-ci.org/dominictarr/json-buffer)
 
 [![testling badge](https://ci.testling.com/dominictarr/json-buffer.png)](https://ci.testling.com/dominictarr/json-buffer)
 

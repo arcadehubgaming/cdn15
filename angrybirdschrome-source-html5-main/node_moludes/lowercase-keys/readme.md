@@ -30,4 +30,4 @@ Lowercases the keys and returns a new object.
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](https://sindresorhus.com)

@@ -493,7 +493,7 @@ var Fabrique;
                 break;
             default:
             case a.BrandingDomain.Kizi:
-                g = "http://www.kizi.com";
+                g = "https://www.kizi.com";
                 break;
             case a.BrandingDomain.Bild:
                 return h = window.open(j + "www.bildspielt.de", "_blank"),
@@ -774,7 +774,7 @@ var Fabrique;
             return __extends(b, a),
             b.prototype.openGame = function() {
                 this.game.analytics && this.game.analytics.google.sendGenericEvent("MoreGames", "Click", this.id),
-                this.url.indexOf("http://") !== -1 && this.url.replace("http:", "");
+                this.url.indexOf("https://") !== -1 && this.url.replace("http:", "");
                 var a = window.open(this.url, "_self");
                 a && a.focus && a.focus()
             }

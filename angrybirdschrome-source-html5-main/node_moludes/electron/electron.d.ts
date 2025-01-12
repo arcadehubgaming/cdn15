@@ -1,5 +1,5 @@
 // Type definitions for Electron 17.0.0
-// Project: http://electronjs.org/
+// Project: https://electronjs.org/
 // Definitions by: The Electron Team <https://github.com/electron/electron>
 // Definitions: https://github.com/electron/electron-typescript-definitions
 
@@ -2420,7 +2420,7 @@ declare namespace Electron {
      *
      * Same as `webContents.loadURL(url[, options])`.
      *
-     * The `url` can be a remote address (e.g. `http://`) or a path to a local HTML
+     * The `url` can be a remote address (e.g. `https://`) or a path to a local HTML
      * file using the `file://` protocol.
      *
      * To ensure that file URLs are properly formatted, it is recommended to use Node's
@@ -7804,7 +7804,7 @@ declare namespace Electron {
      *
      * For example:
      *
-     * * `http=foopy:80;ftp=foopy2` - Use HTTP proxy `foopy:80` for `http://` URLs, and
+     * * `http=foopy:80;ftp=foopy2` - Use HTTP proxy `foopy:80` for `https://` URLs, and
      * HTTP proxy `foopy2:80` for `ftp://` URLs.
      * * `foopy:80` - Use HTTP proxy `foopy:80` for all URLs.
      * * `foopy:80,bar,direct://` - Use HTTP proxy `foopy:80` for all URLs, failing
@@ -7829,12 +7829,12 @@ declare namespace Electron {
      *
      * Match a particular domain suffix.
      *
-     * Examples: ".google.com", ".com", "http://.google.com"
+     * Examples: ".google.com", ".com", "https://.google.com"
      * * `[ SCHEME "://" ] IP_LITERAL [ ":" PORT ]`
      *
      * Match URLs which are IP address literals.
      *
-     * Examples: "127.0.1", "[0:0::1]", "[::1]", "http://[::1]:99"
+     * Examples: "127.0.1", "[0:0::1]", "[::1]", "https://[::1]:99"
      * * `IP_LITERAL "/" PREFIX_LENGTH_IN_BITS`
      *
      * Match any URL that is to an IP literal that falls between the given range. IP
@@ -11113,7 +11113,7 @@ declare namespace Electron {
      * errors.
      *
      * Loads the `url` in the window. The `url` must contain the protocol prefix, e.g.
-     * the `http://` or `file://`. If the load should bypass http cache then use the
+     * the `https://` or `file://`. If the load should bypass http cache then use the
      * `pragma` header to achieve it.
      */
     loadURL(url: string, options?: LoadURLOptions): Promise<void>;
@@ -12288,7 +12288,7 @@ declare namespace Electron {
      * `did-finish-load`), and rejects if the page fails to load (see `did-fail-load`).
      *
      * Loads the `url` in the webview, the `url` must contain the protocol prefix, e.g.
-     * the `http://` or `file://`.
+     * the `https://` or `file://`.
      */
     loadURL(url: string, options?: LoadURLOptions): Promise<void>;
     /**

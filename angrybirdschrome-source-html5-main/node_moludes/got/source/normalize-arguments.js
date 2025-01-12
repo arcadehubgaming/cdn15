@@ -123,7 +123,7 @@ const normalize = (url, options, defaults) => {
 
 			url = urlToOptions(new URL(url, options.baseUrl));
 		} else {
-			url = url.replace(/^unix:/, 'http://$&');
+			url = url.replace(/^unix:/, 'https://$&');
 			url = urlParseLax(url);
 		}
 	} else if (is(url) === 'URL') {

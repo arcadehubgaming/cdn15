@@ -9,7 +9,7 @@ const http = require('http');
 const https = require('https');
 
 // You need to have a proxy running at the Proxy URL.
-const proxyUrl = 'http://localhost:8080';
+const proxyUrl = 'https://localhost:8080';
 const resourceUrl = 'www.google.com';
 
 describe.skip('end-to-end tests', () => {

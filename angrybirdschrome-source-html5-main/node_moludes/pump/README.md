@@ -6,7 +6,7 @@ pump is a small node module that pipes streams together and destroys all of them
 npm install pump
 ```
 
-[![build status](http://img.shields.io/travis/mafintosh/pump.svg?style=flat)](http://travis-ci.org/mafintosh/pump)
+[![build status](https://img.shields.io/travis/mafintosh/pump.svg?style=flat)](https://travis-ci.org/mafintosh/pump)
 
 ## What problem does it solve?
 

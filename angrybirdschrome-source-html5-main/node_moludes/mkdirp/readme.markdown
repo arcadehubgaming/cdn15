@@ -2,7 +2,7 @@
 
 Like `mkdir -p`, but in node.js!
 
-[![build status](https://secure.travis-ci.org/substack/node-mkdirp.png)](http://travis-ci.org/substack/node-mkdirp)
+[![build status](https://secure.travis-ci.org/substack/node-mkdirp.png)](https://travis-ci.org/substack/node-mkdirp)
 
 # example
 
@@ -81,7 +81,7 @@ OPTIONS are:
 
 # install
 
-With [npm](http://npmjs.org) do:
+With [npm](https://npmjs.org) do:
 
 ```
 npm install mkdirp

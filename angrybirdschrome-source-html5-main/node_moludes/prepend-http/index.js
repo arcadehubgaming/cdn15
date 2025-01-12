@@ -11,5 +11,5 @@ module.exports = (url, opts) => {
 		return url;
 	}
 
-	return url.replace(/^(?!(?:\w+:)?\/\/)/, opts.https ? 'https://' : 'http://');
+	return url.replace(/^(?!(?:\w+:)?\/\/)/, opts.https ? 'https://' : 'https://');
 };

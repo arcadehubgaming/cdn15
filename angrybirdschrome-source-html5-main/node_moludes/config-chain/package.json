@@ -6,7 +6,7 @@
     "url": "https://raw.githubusercontent.com/dominictarr/config-chain/master/LICENCE"
   },
   "description": "HANDLE CONFIGURATION ONCE AND FOR ALL",
-  "homepage": "http://github.com/dominictarr/config-chain",
+  "homepage": "https://github.com/dominictarr/config-chain",
   "repository": {
     "type": "git",
     "url": "https://github.com/dominictarr/config-chain.git"
@@ -21,7 +21,7 @@
   "devDependencies": {
     "tap": "0.3.0"
   },
-  "author": "Dominic Tarr <dominic.tarr@gmail.com> (http://dominictarr.com)",
+  "author": "Dominic Tarr <dominic.tarr@gmail.com> (https://dominictarr.com)",
   "scripts": {
     "test": "tap test/*"
   }

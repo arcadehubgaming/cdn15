@@ -1,11 +1,11 @@
 # buffer-crc32
 
-[![Build Status](https://secure.travis-ci.org/brianloveswords/buffer-crc32.png?branch=master)](http://travis-ci.org/brianloveswords/buffer-crc32)
+[![Build Status](https://secure.travis-ci.org/brianloveswords/buffer-crc32.png?branch=master)](https://travis-ci.org/brianloveswords/buffer-crc32)
 
 crc32 that works with binary data and fancy character sets, outputs
 buffer, signed or unsigned data and has tests.
 
-Derived from the sample CRC implementation in the PNG specification: http://www.w3.org/TR/PNG/#D-CRCAppendix
+Derived from the sample CRC implementation in the PNG specification: https://www.w3.org/TR/PNG/#D-CRCAppendix
 
 # install
 ```

@@ -13,7 +13,7 @@ declare namespace normalizeUrl {
 		@example
 		```
 		normalizeUrl('//sindresorhus.com:80/');
-		//=> 'http://sindresorhus.com'
+		//=> 'https://sindresorhus.com'
 
 		normalizeUrl('//sindresorhus.com:80/', {normalizeProtocol: false});
 		//=> '//sindresorhus.com'
@@ -32,7 +32,7 @@ declare namespace normalizeUrl {
 		//=> 'https://sindresorhus.com'
 
 		normalizeUrl('https://sindresorhus.com:80/', {forceHttp: true});
-		//=> 'http://sindresorhus.com'
+		//=> 'https://sindresorhus.com'
 		```
 		*/
 		readonly forceHttp?: boolean;
@@ -49,7 +49,7 @@ declare namespace normalizeUrl {
 		normalizeUrl('https://sindresorhus.com:80/');
 		//=> 'https://sindresorhus.com'
 
-		normalizeUrl('http://sindresorhus.com:80/', {forceHttps: true});
+		normalizeUrl('https://sindresorhus.com:80/', {forceHttps: true});
 		//=> 'https://sindresorhus.com'
 		```
 		*/
@@ -79,16 +79,16 @@ declare namespace normalizeUrl {
 		@example
 		```
 		normalizeUrl('sindresorhus.com/about.html#contact');
-		//=> 'http://sindresorhus.com/about.html#contact'
+		//=> 'https://sindresorhus.com/about.html#contact'
 
 		normalizeUrl('sindresorhus.com/about.html#contact', {stripHash: true});
-		//=> 'http://sindresorhus.com/about.html'
+		//=> 'https://sindresorhus.com/about.html'
 		```
 		*/
 		readonly stripHash?: boolean;
 
 		/**
-		Removes HTTP(S) protocol from an URL `http://sindresorhus.com` → `sindresorhus.com`.
+		Removes HTTP(S) protocol from an URL `https://sindresorhus.com` → `sindresorhus.com`.
 
 		@default false
 
@@ -110,11 +110,11 @@ declare namespace normalizeUrl {
 
 		@example
 		```
-		normalizeUrl('http://www.sindresorhus.com');
-		//=> 'http://sindresorhus.com'
+		normalizeUrl('https://www.sindresorhus.com');
+		//=> 'https://sindresorhus.com'
 
-		normalizeUrl('http://www.sindresorhus.com', {stripWWW: false});
-		//=> 'http://www.sindresorhus.com'
+		normalizeUrl('https://www.sindresorhus.com', {stripWWW: false});
+		//=> 'https://www.sindresorhus.com'
 		```
 		*/
 		readonly stripWWW?: boolean;
@@ -129,7 +129,7 @@ declare namespace normalizeUrl {
 		normalizeUrl('www.sindresorhus.com?foo=bar&ref=test_ref', {
 			removeQueryParameters: ['ref']
 		});
-		//=> 'http://sindresorhus.com/?foo=bar'
+		//=> 'https://sindresorhus.com/?foo=bar'
 		```
 		*/
 		readonly removeQueryParameters?: ReadonlyArray<RegExp | string>;
@@ -143,14 +143,14 @@ declare namespace normalizeUrl {
 
 		@example
 		```
-		normalizeUrl('http://sindresorhus.com/redirect/');
-		//=> 'http://sindresorhus.com/redirect'
+		normalizeUrl('https://sindresorhus.com/redirect/');
+		//=> 'https://sindresorhus.com/redirect'
 
-		normalizeUrl('http://sindresorhus.com/redirect/', {removeTrailingSlash: false});
-		//=> 'http://sindresorhus.com/redirect/'
+		normalizeUrl('https://sindresorhus.com/redirect/', {removeTrailingSlash: false});
+		//=> 'https://sindresorhus.com/redirect/'
 
-		normalizeUrl('http://sindresorhus.com/', {removeTrailingSlash: false});
-		//=> 'http://sindresorhus.com'
+		normalizeUrl('https://sindresorhus.com/', {removeTrailingSlash: false});
+		//=> 'https://sindresorhus.com'
 		```
 		*/
 		readonly removeTrailingSlash?: boolean;
@@ -166,7 +166,7 @@ declare namespace normalizeUrl {
 		normalizeUrl('www.sindresorhus.com/foo/default.php', {
 			removeDirectoryIndex: [/^default\.[a-z]+$/]
 		});
-		//=> 'http://sindresorhus.com/foo'
+		//=> 'https://sindresorhus.com/foo'
 		```
 		*/
 		readonly removeDirectoryIndex?: ReadonlyArray<RegExp | string>;
@@ -181,7 +181,7 @@ declare namespace normalizeUrl {
 		normalizeUrl('www.sindresorhus.com?b=two&a=one&c=three', {
 			sortQueryParameters: false
 		});
-		//=> 'http://sindresorhus.com/?b=two&a=one&c=three'
+		//=> 'https://sindresorhus.com/?b=two&a=one&c=three'
 		```
 		*/
 		readonly sortQueryParameters?: boolean;
@@ -199,10 +199,10 @@ declare const normalizeUrl: {
 	import normalizeUrl = require('normalize-url');
 
 	normalizeUrl('sindresorhus.com');
-	//=> 'http://sindresorhus.com'
+	//=> 'https://sindresorhus.com'
 
-	normalizeUrl('HTTP://xn--xample-hva.com:80/?b=bar&a=foo');
-	//=> 'http://êxample.com/?a=foo&b=bar'
+	normalizeUrl('https://xn--xample-hva.com:80/?b=bar&a=foo');
+	//=> 'https://êxample.com/?a=foo&b=bar'
 	```
 	*/
 	(url: string, options?: normalizeUrl.Options): string;

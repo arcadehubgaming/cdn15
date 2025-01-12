@@ -4,7 +4,7 @@ A module for loading custom configurations
 
 ## NOTE: Feature Freeze
 
-[![locked](http://badges.github.io/stability-badges/dist/locked.svg)](http://github.com/badges/stability-badges)
+[![locked](https://badges.github.io/stability-badges/dist/locked.svg)](https://github.com/badges/stability-badges)
 
 This module is frozen.
 
@@ -108,7 +108,7 @@ var config = cc({
     cc.env('myApp_')
   )
   // CONFIGS AS A SERVICE, aka "CaaS", aka EVERY DEVOPS DREAM OMG!
-  .addUrl('http://configurator:1234/my-configs')
+  .addUrl('https://configurator:1234/my-configs')
   // ASYNC FTW!
   .addFile('/path/to/file.json')
 
@@ -181,7 +181,7 @@ One of these is returned by the main exported function, as well.
 It inherits (prototypically) from
 [ProtoList](https://github.com/isaacs/proto-list/), and also inherits
 (parasitically) from
-[EventEmitter](http://nodejs.org/api/events.html#events_class_events_eventemitter)
+[EventEmitter](https://nodejs.org/api/events.html#events_class_events_eventemitter)
 
 It has all the methods from both, and except where noted, they are
 unchanged.

@@ -5,12 +5,12 @@
 # global-tunnel
 
 Configures the [global
-`http`](http://nodejs.org/docs/v0.10.24/api/all.html#all_http_globalagent) and
-[`https`](http://nodejs.org/docs/v0.10.24/api/all.html#all_https_globalagent)
+`http`](https://nodejs.org/docs/v0.10.24/api/all.html#all_http_globalagent) and
+[`https`](https://nodejs.org/docs/v0.10.24/api/all.html#all_https_globalagent)
 agents to use an upstream HTTP proxy.
 
 Works transparently to tunnel modules that use node's default [`http.request()`
-method](http://nodejs.org/docs/v0.10.24/api/all.html#all_http_request_options_callback)
+method](https://nodejs.org/docs/v0.10.24/api/all.html#all_http_request_options_callback)
 as well as the popular [`request` module](https://npmjs.org/package/request).
 
 # Installation
@@ -183,7 +183,7 @@ The property `globalTunnel.isProxying` contains the information about whether th
 # Compatibility
 
 Any module that doesn't specify [an explicit `agent:` option to
-`http.request`](http://nodejs.org/docs/v0.10.24/api/all.html#all_http_request_options_callback)
+`http.request`](https://nodejs.org/docs/v0.10.24/api/all.html#all_http_request_options_callback)
 will also work with global-tunnel.
 
 The unit tests for this module verify that the popular [`request`
@@ -200,7 +200,7 @@ to get you started.
 
 ## Development Dependencies
 
-- [node.js](http://nodejs.org) >= 0.10
+- [node.js](https://nodejs.org) >= 0.10
 
 ## Set-Up
 
