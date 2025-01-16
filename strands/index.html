@@ -76,37 +76,39 @@
                     </div>
                     <div class="flex flex-row justify-center supra text-xl font-light my-2 text-center" id="guess">
                     </div>
-                    <div class="flex flex-col-reverse sm:flex-row justify-center gap-4">
-                        <div class="flex flex-col justify-center gap-4">
+                    <div class="flex flex-col-reverse sm:flex-row justify-center gap-4" style="min-width: 600px;">
+                        <div class="flex flex-col justify-center gap-4" style="min-width: 450px;">
                             <div class="card ~neutral @low bg-transparent">
                                 <div id="messagebox" class="text-center font-bold text-2xl h-8 handwriting"></div>
                             </div>
-                            <div class="card ~neutral @low">
+                            <div class="card ~neutral @low" style="min-width: 450px;">
                                 <p class="text-sm uppercase text-center">Today's Clue</p>
                                 <div class="font-bold text-xl text-center handwriting" id="clue"></div>
                             </div>
-                            <div class="card ~neutral @low">
+                            <div class="card ~neutral @low" style="min-width: 450px;">
                                 <p id="found-text" class="text-center"></p>
                                 <button class="button ~neutral @low font-bold overflow-hidden w-100 my-2" id="hint-button"></button>
                             </div>
-                            <div class="flex flex-row gap-2">
-                                <button class="button ~neutral @low flex flex-col w-1/3" id="load-file">
+                            <div class="flex flex-row gap-2" style="min-width: 450px;">
+                                <button class="button ~neutral @low flex flex-col w-1/2 dark:~d_neutral" id="load-file">
                                     <div class="font-bold text-sm">Load File</div>
                                     <!-- <div class="support">Boards can be acquired from NYT in devTools.</div> -->
-                                </button>
-                                <button class="button ~neutral @low w-2/3" id="load-nyt">
-                                    <div class="font-bold">NYT Boards</div>
-                                </button>
-                            </div>
-                            <div class="flex flex-row justify-between gap-2">
-                                <button class="button ~neutral @low flex flex-col grow" id="rooms-button">
-                                    <div class="font-bold">Multiplayer</div>
-                                    <div class="support" id="room-code"></div>
-                                </button>
-                                <button class="button ~info @high w-1/4 hidden" title="Copy room link" id="copy-room-link">
-                                    <i class="ri-file-copy-line"></i>
+                                </button>   
+                                <button class="button ~neutral @low flex flex-col w-1/2 dark:~d_neutral" id="load-nyt-button">
+                                    <div class="font-bold text-sm">Load NYT (Date)</div>
+                                    <!-- <div class="support">Boards can be acquired from NYT in devTools.</div> -->
                                 </button>
                             </div>
+                            <div class="flex flex-row" style="min-width: 450px;">
+                                <button class="button ~neutral @low flex flex-col w-full dark:~d_neutral" id="load-today-nyt-button">
+                                    <div class="font-bold text-sm">Load Today's NYT Strand</div>
+                                    <!-- <div class="support">Boards can be acquired from NYT in devTools.</div> -->
+                                </button>
+                            </div>
+                            <p id="rooms-button"></p>
+                            <p id="room-code"></p>
+                            <p id="copy-room-link"></p>
+                            <p id="load-nyt"></p>
                         </div>
                         <div class="flex flex-row select-none justify-center touch-none handwriting" id="board"></div>
                     </div>

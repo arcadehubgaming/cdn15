@@ -138,118 +138,7 @@ export class MultiplayerClient {
     }
 
     connect = (then: () => void = () => {}) => {
-        this._ws = new WebSocket(this._url);
-        this._ws.onclose= 
-        this._ws.onerror = () => {
-            window.notif.customError("errorConnect", "Couldn't connect to server, multiplayer & board download unavailable.");
-            this._connected = false;
-        }
-        this._ws.onclose = () => {
-            window.notif.customError("disconnected", "Disconnected from server, refresh the page to reconnect.");
-            this._connected = false;
-        };
-        this._ws.onmessage = (e) => {
-            // Split here, unlike go, discards leftover stuff when the limit (4) is reached, instead of including it w/ the last element.
-            // so instead we use a custom one.
-            // let components = (e.data as string).split(" ", 4)
-            let components = splitByCharN(e.data as string, " ", 4);
-            if (components.length > 1) {
-                components[components.length - 1] = components[components.length - 1].trimEnd();
-            }
-            switch (components[0]) {
-                case iHello: {
-                    this.respHello(components);
-                    break;
-                }
-                case iNewRoom: {
-                    this.respNewRoom(components);
-                    break;
-                }
-                case iListRooms: {
-                    this.respListRooms(components);
-                    break;
-                }
-                case iGetBoard: {
-                    this.respGetBoard(components);
-                    break;
-                }
-                case iBoardSummaries: {
-                    this.respBoardSummaries(components);
-                    break
-                }
-                case iGuess: {
-                    this.respGuess(components);
-                    break;
-                }
-                case iEndGuess: {
-                    this.respEndGuess();
-                    break;
-                }
-                case iHint: {
-                    this.respHint();
-                    break;
-                }
-                case iReqStateFromHost: {
-                    this.respReqStateFromHost(components);
-                    break;
-                }
-                case iThemeWord: {
-                    this.onBoardStateThemeWord(components[1]);
-                    break;
-                }
-                case iSpangram: {
-                    this.processSpangramCoords(components);
-                    break;
-                }
-                case iCurrentGuess: {
-                    this.processCurrentGuess(components);
-                    break;
-                }
-                case iWordsToGetHint: {
-                    this.onBoardStateWordsToGetHint(+(components[1]));
-                    break;
-                }
-                case iNewHost: {
-                    this.onHostPromotion();
-                    break;
-                }
-                case iPlayerJoined: {
-                    this.onPlayerJoined(components[1] as UID);
-                    break;
-                }
-                case iPlayerLeft: {
-                    this.onPlayerLeft(components[1] as UID);
-                    break;
-                }
-                case iSuccess: {
-                    this._successFunc();
-                    break;
-                }
-                case iFail: {
-                    this._failFunc();
-                    break;
-                }
-                case iFinished: {
-                    this._endFunc();
-                    break;
-                }
-                case iInvalid: {
-                    this._invalidFunc();
-                    break;
-                }
-                case iPing: {
-                    // console.log("Ping successful.");
-                    break;
-                }
-                default:
-                    console.log("Got response:", e.data);
-            }
-        }
-        this._ws.onopen = () => {
-            this._connected = true;
-            this._ping();
-            then();
-        };
+        
     }
 
     private _ping = () => {
@@ -536,12 +425,6 @@ export class MultiplayerUI {
     board: string;
     private _boardLoader: (board: BoardData) => void;
     private _modal: Modal;
-    private _roomTable: HTMLElement;
-    private _roomCodeArea: HTMLElement;
-    private _roomButton: HTMLButtonElement;
-    private _roomLinkCopy: HTMLButtonElement
-    private _newRoomButton: HTMLButtonElement;
-    private _newRoomInputs: HTMLDivElement;
         
     onJoinRoom = (success: boolean = false) => {
         if (!success) {
@@ -549,28 +432,14 @@ export class MultiplayerUI {
             return;
         }
         this.cli.cmdGetBoard();
-        this._roomCodeArea.textContent = "Room: " + this.cli.room.rid;
-        this._roomLinkCopy.classList.remove("hidden");
         let url = this.urlFromRID(this.cli.room.rid, unicodeB64Encode(this.cli.room.password));
         window.history.pushState({}, "", url);
 
-        this._roomLinkCopy.onclick = () => {
-            toClipboard(url);
-            this._roomLinkCopy.classList.add("~positive");
-            this._roomLinkCopy.classList.remove("~info");
-            window.notif.customInfo("copied", "", "Copied link to clipboard.");
-            setTimeout(() => {
-                this._roomLinkCopy.classList.add("~info");
-                this._roomLinkCopy.classList.remove("~positive");
-            }, 3000);
-        };
         this._modal.close();
     }
 
     onLeaveRoom = () => {
         window.history.pushState({}, "", this.getBaseURL());
-        this._roomCodeArea.textContent = ``;
-        this._roomLinkCopy.classList.add("hidden");
         this._modal.close();
         window.notif.customSuccess("roomLeft", `Room left.`);
     };
@@ -624,15 +493,8 @@ export class MultiplayerUI {
 
     constructor(client: MultiplayerClient, modal: HTMLElement, roomTable: HTMLElement, roomCodeArea: HTMLElement, roomButton: HTMLButtonElement, roomLinkCopy: HTMLButtonElement, newRoomButton: HTMLButtonElement, newRoomInputs: HTMLDivElement, boardLoader: (board: BoardData) => void) {
         this.cli = client;
-        this._roomTable = roomTable;
-        this._roomCodeArea = roomCodeArea;
-        this._roomButton = roomButton;
-        this._newRoomButton = newRoomButton;
-        this._newRoomInputs = newRoomInputs;
-        this._roomLinkCopy = roomLinkCopy;
         this._boardLoader = boardLoader;
 
-        this._roomLinkCopy.classList.add("hidden");
         
         this.cli.onHostPromotion = () => {
             window.notif.customInfo("hostPromotion", "", "You were made host.");
@@ -659,78 +521,5 @@ export class MultiplayerUI {
         };
 
         this._modal = new Modal(modal, false);
-        this._modal.onopen = () => this.cli.cmdListRooms(() => {
-            this._roomTable.textContent = ``;
-            if (Object.keys(this.cli.roomList).length == 0) {
-                this._roomTable.innerHTML = `
-                <div class="flex flex-row justify-between my-2">No rooms. Create a new one below.</div>
-                `;
-                return;
-            }
-            for (const rid in this.cli.roomList) {
-                let hasName = this.cli.roomList[rid].nick != "";
-                let descriptor = hasName ? this.cli.roomList[rid].nick : rid;
-                let lockIcon = "";
-                if (this.cli.roomList[rid].password) {
-                    lockIcon = `<i class="p-2 ri-lock-2-line"></i>`;
-                }
-                const tr = document.createElement("tr");
-                tr.innerHTML = `
-                    <td class="${hasName ? "" : "font-mono"} px-0">${descriptor}${lockIcon}</td>
-                    <td class="px-0">${this.cli.roomList[rid].playerCount}</td>
-                    <td class="px-0 justify-end flex flex-row gap-2">
-                        <input type="password" class="field ~neutal hidden" placeholder="Password"></input>
-                        <button class="button ~${this.cli.room.rid == rid ? "critical" : "positive"} @high room-join handwriting">${this.cli.room.rid == rid ? LEAVE_ROOM : JOIN_ROOM}</button>
-                    </td>
-                `;
-                const pwInput = tr.querySelector("input[type=password]") as HTMLInputElement;
-                const joinButton = tr.querySelector("button.room-join") as HTMLButtonElement;
-                joinButton.onclick = () => {
-                    if (this.cli.room.rid == rid) {
-                        this.cli.cmdLeaveRoom(this.onLeaveRoom);
-                    } else {
-                        if (this.cli.roomList[rid].password && (pwInput.value == "" || pwInput.classList.contains("hidden"))) {
-                            pwInput.classList.remove("hidden");
-                        } else {
-                            this.cli.cmdJoinRoom(rid, pwInput.value, this.onJoinRoom);
-                        }
-                    }
-                };
-                this._roomTable.appendChild(tr);
-            }
-        });
-        this._roomButton.onclick = this._modal.show;
-        this._newRoomButton.onclick = () => {
-            if (this._newRoomInputs.childElementCount == 0) {
-                const nameInput = document.createElement("input") as HTMLInputElement;
-                nameInput.type = "text";
-                nameInput.classList.add("field", "~neutral");
-                nameInput.placeholder = "Room Name";
-                const pwInput = document.createElement("input") as HTMLInputElement;
-                pwInput.type = "password";
-                pwInput.classList.add("field", "~neutral");
-                pwInput.placeholder = "Password (optional)";
-
-                this._newRoomInputs.appendChild(nameInput);
-                this._newRoomInputs.appendChild(pwInput);
-                this._newRoomButton.classList.add("~positive", "@high");
-                this._newRoomButton.classList.remove("~neutral");
-                this._newRoomButton.classList.remove("@low");
-            } else {
-                const nameInput = this._newRoomInputs.querySelector("input[type=text]") as HTMLInputElement;
-                const pwInput = this._newRoomInputs.querySelector("input[type=password]") as HTMLInputElement;
-                this._newRoomButton.classList.add("~neutral", "@low");
-                this._newRoomButton.classList.remove("~positive");
-                this._newRoomButton.classList.remove("@high");
-                this._newRoomInputs.textContent = ``;
-                this.cli.cmdNewRoom(nameInput.value, pwInput.value, (success: boolean = false) => {
-                    if (success) {
-                        this.onJoinRoom(success);
-                        let descriptor = this.cli.room.nick == "" ? this.cli.room.rid : this.cli.room.nick;
-                        window.notif.customSuccess("roomCreated", `Room "${descriptor}" created.`);
-                    }
-                });
-            }
-        };
     }
 }

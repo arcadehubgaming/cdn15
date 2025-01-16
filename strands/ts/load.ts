@@ -54,6 +54,65 @@ export class BoardLoader {
             input.click();
         };
 
+        document.getElementById("load-nyt-button").onclick = () => {
+            var strand_date = prompt("Date (leave empty if you want today's Strand)");
+            var date = "";
+        
+            if (!strand_date || strand_date.trim() === "") {
+                var d = new Date();
+                var year = d.getFullYear();
+                var month = (d.getMonth() + 1).toString().padStart(2, '0');
+                var day = d.getDate().toString().padStart(2, '0'); 
+                date = `${year}-${month}-${day}`;
+            } else {
+                var userDate = new Date(strand_date);
+                if (!isNaN(userDate.getTime())) {
+                    var year = userDate.getFullYear();
+                    var month = (userDate.getMonth() + 1).toString().padStart(2, '0');
+                    var day = userDate.getDate().toString().padStart(2, '0');
+                    date = `${year}-${month}-${day}`;
+                } else {
+                    alert("Invalid date format. Please enter a valid date in yyyy-mm-dd format.");
+                    return;
+                }
+            }
+        
+            var url = `https://api.codetabs.com/v1/proxy/?quest=https://www.nytimes.com/svc/strands/v2/${date}.json`;
+        
+            fetch(url)
+                .then((result) => {
+                    return result.json();
+                })
+                .then((data) => {
+                    this._loadFunc(JSON.stringify(data));
+                })
+                .catch((error) => {
+                    console.error("Error fetching data:", error);
+                });
+        };
+
+        document.getElementById("load-today-nyt-button").onclick = () => {
+            var d = new Date();
+            var year = d.getFullYear();
+            var month = (d.getMonth() + 1).toString().padStart(2, '0');
+            var day = d.getDate().toString().padStart(2, '0'); 
+            var date = `${year}-${month}-${day}`;
+            var url = `https://api.codetabs.com/v1/proxy/?quest=https://www.nytimes.com/svc/strands/v2/${date}.json`;
+
+            fetch(url)
+                .then((result) => {                
+                    return result.json();
+                })
+                .then((data) => {
+                    this._loadFunc(JSON.stringify(data));
+                })
+                .catch((error) => {
+                    console.error("Error fetching data:", error);
+                });
+        };
+        
+        
+
         this._nytButton.onclick = () => {
             this._summaries = [];
             this._boardList.textContent = ``;
