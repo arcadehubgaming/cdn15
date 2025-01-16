@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" class="light-theme">
-    <head>
+<!DOCTYPE html><html lang="en" class="light-theme"><head>
         <link rel="stylesheet" type="text/css" href="./bundle.css">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
@@ -18,11 +16,11 @@
     </head>
     <body class="max-w-full overflow-x-hidden section">
         <div id="modal-rooms" class="modal">
-            <div class="relative mx-auto my-[10%] w-4/5 lg:w-2/3 content card sectioned ~neutral @low p-0">
+            <div class="relative mx-auto my-[10%] w-4/5 lg:w-2/3 content card sectioned ~neutral @low p-0 dark:~d_neutral">
                 <section class="p-4">
-                    <span class="heading">Rooms<span class="modal-close">&times;</span></span>
+                    <span class="heading">Rooms<span class="modal-close">×</span></span>
                     <div class="overflow-x-auto">
-                        <table class="table">
+                        <table class="table ~neutral dark:~d_neutral @low">
                             <thead>
                                 <tr>
                                     <th class="px-0">Room ID/Name</th>
@@ -35,19 +33,19 @@
                     </div>
                 </section>
                 <section class="section ~neutral flex gap-2 p-4">
-                    <button class="button ~neutral @low" id="new-room">New Room</button>
+                    <button class="button ~neutral @low dark:~d_neutral" id="new-room">New Room</button>
                     <div class="flex flex-row gap-2" id="new-room-inputs"></div>
                 </section>
             </div>
         </div>
         <div id="modal-nyt" class="modal">
-            <div class="relative mx-auto my-[10%] w-4/5 lg:w-2/3 content card ~neutral sectioned p-0">
+            <div class="relative mx-auto my-[10%] w-4/5 lg:w-2/3 content card ~neutral sectioned p-0 dark:~d_neutral @low">
                 <section class="p-4">
-                    <span class="heading">Boards<span class="modal-close">&times;</span></span>
+                    <span class="heading">Boards<span class="modal-close">×</span></span>
                     <label class="flex flex-row my-2" for="nyt-specific-input">Specific Date</label>
                     <div class="flex flex-row gap-2 my-2" id="nyt-specific">
-                        <input type="text" id="nyt-specific-input" class="field ~neutral" placeholder="YYYY-MM-DD"></input>
-                        <button class="button ~info @high">Download</button>
+                        <input type="text" id="nyt-specific-input" class="field ~neutral dark:~d_neutral @low" placeholder="YYYY-MM-DD">
+                        <button class="button ~info @high dark:~d_info">Download</button>
                     </div>
                     <p class="support">Note: Future boards might work too!</p>
                     <!-- <div class="overflow-x-auto">
@@ -69,25 +67,25 @@
         </div>
         <div id="notification-box"></div>
         <div class="m-[2%] lg:my-[5%] md:mx-[20%]" id="page-container">
-            <div class="card sectioned ~neutral @low">
+            <div class="card sectioned ~neutral @low dark:~d_neutral">
                 <section class="section">
                     <div class="flex flex-row justify-center">
-                        <img src="long.svg" class="w-2/3 sm:w-2/5" alt="filaments"></img>
+                        <img src="long.svg" class="w-2/3 sm:w-2/5" alt="filaments">
                     </div>
                     <div class="flex flex-row justify-center supra text-xl font-light my-2 text-center" id="guess">
                     </div>
                     <div class="flex flex-col-reverse sm:flex-row justify-center gap-4" style="min-width: 40%;">
                         <div class="flex flex-col justify-center gap-4" style="min-width: 29%;">
-                            <div class="card ~neutral @low bg-transparent">
+                            <div class="card ~neutral @low bg-transparent dark:~d_neutral">
                                 <div id="messagebox" class="text-center font-bold text-2xl h-8 handwriting"></div>
                             </div>
-                            <div class="card ~neutral @low" style="min-width: 29%;">
+                            <div class="card ~neutral @low dark:~d_neutral" style="min-width: 29%;">
                                 <p class="text-sm uppercase text-center">Today's Clue</p>
                                 <div class="font-bold text-xl text-center handwriting" id="clue"></div>
                             </div>
-                            <div class="card ~neutral @low" style="min-width: 29%;">
+                            <div class="card ~neutral @low dark:~d_neutral" style="min-width: 29%;">
                                 <p id="found-text" class="text-center"></p>
-                                <button class="button ~neutral @low font-bold overflow-hidden w-100 my-2" id="hint-button"></button>
+                                <button class="button ~neutral @low font-bold overflow-hidden w-100 my-2 dark:~d_neutral" id="hint-button"></button>
                             </div>
                             <div class="flex flex-row gap-2" style="min-width: 29%;">
                                 <button class="button ~neutral @low flex flex-col w-1/2 dark:~d_neutral" id="load-file">
@@ -114,14 +112,15 @@
                     </div>
                 </section>
                 <section class="section ~info text-xs font-extralight italic">
-                    <p>Recoded & repurposed by <a class="underline" href="https://arcadehubgaming.github.io">ArcadeHub.</a></p>
+                    <p>Recoded &amp; repurposed by <a class="underline" href="https://arcadehubgaming.github.io">ArcadeHub.</a></p>
                     <p>Source code for original site available on <a class="underline" href="https://github.com/hrfee/filaments">GitHub</a>.</p>
                     <p><a class="underline" href="https://github.com/hrfee/filaments/blob/main/LICENSE">Available under the MIT License.</a> Fonts <a class="underline" href="https://github.com/marcologous/hanken-grotesk">"Hanken Grotesk"</a> and <a class="underline" href="https://github.com/xmindltd/nevermind/blob/master/LICENSE">"NeverMind Hand"</a> available under SIL OFL 1.1 License.</p>
                 </section>
             </div>
             </div>
-        </div>
+        
         <script src="main.js"></script>
-    </body>
-</html>
+    
 
+
+</body></html>

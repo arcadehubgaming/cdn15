@@ -1,5 +1,4 @@
 serv
-out/
 node_modules/
 tempts/
 ts/board-old.ts
